@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class Main {
+class ArraysMain {
   public static void main(String[] args) {
     int[] a1 = new int[5];
     int[] a2 = {1,3,5,7,9};

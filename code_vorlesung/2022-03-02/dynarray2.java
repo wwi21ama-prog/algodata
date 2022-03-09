@@ -26,7 +26,7 @@ class DynArray {
     }
   }
   
-  class Main {
+  class DynArray2Main {
     public static void main(String[] args) {
       DynArray d1 = new DynArray();
       
