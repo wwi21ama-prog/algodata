@@ -22,30 +22,34 @@ class Element implements Comparable<Element> {
   }
 
   public int compareTo(Element other) {
-    if (this.key < other.key) { return -1; } 
-    if (this.key == other.key) { return 0; }
-    return 1;
+      if (this.key < other.key) { return -1; } 
+      if (this.key == other.key) { return 0; }
+      return 1;
   }
 
   public void printList() {
       if (this.isValid()) {
           System.out.println(this);
           next.printList();
-      }
+    }
   }
 
   public boolean isValid() {
       return next != null;
   }
 
-    // Liefert das Ende der Liste (den Dummy am Ende):
-    public Element getEnd() {
-    
+  // Liefert das Ende der Liste (den Dummy am Ende):
+  public Element getEnd() {
+        if (!this.isValid()) { return this; }
+        return next.getEnd();
     }
   
     // Hängt ein neues Element mit den gegebenen Werten ans Ende an:
     public void add(int key, int value) {
-      
+      Element last = getEnd();
+      last.next = new Element();
+      last.key = key;
+      last.value = value;
     }
 }
 
@@ -101,10 +105,19 @@ class FindAndSort {
 
     System.out.println();
     System.out.println();
-
+    
     e1.printList();
+    
+    System.out.println();
+    System.out.println();
 
     e1.add(15,155); // Sollte dazu führen, dass das Paar (15,155) am Ende steht.
     e1.printList();
+
+    // Eine "frische" Liste erzeugen.
+    Element l3 = new Element();
+    l3.add(10,20);
+    l3.add(42,115);
+    l3.printList();
   }
 }
